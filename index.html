@@ -45,6 +45,18 @@ function loadApp() {
 		return;
 	}
 
+	// Design Flags
+	var flag1 = 600 // Height For HardCover
+	var flag2 = 582 // Hight For Pages
+
+	$("#canvas").css("height", flag1 + "px");
+	$(".sj-book").css("height", flag1 + "px");
+	$(".sj-book .p1 .side").css("height", flag1 + "px");
+	$(".sj-book .hard").css("height", flag1 + "px");
+	$(".sj-book .own-size").css("height", flag2 + "px");
+
+	
+
 	// Mousewheel
 
 	$('#book-zoom').mousewheel(function(event, delta, deltaX, deltaY) {
@@ -257,7 +269,7 @@ function loadApp() {
 			missing: function (e, pages) {
 
 				for (var i = 0; i < pages.length; i++) {
-					addPage(pages[i], $(this));
+					addPage(pages[i], $(this), flag2);
 				}
 
 			}

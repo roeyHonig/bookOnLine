@@ -22,8 +22,8 @@
   
   #canvas{
       width: 960px;
-      height:600px;
-      margin: 100px auto;
+      height:700px;
+      margin: 20px auto;
   }
   
   #book-zoom{
@@ -36,7 +36,7 @@
   
   .sj-book{
       width:960px;
-      height:600px;
+      height:700px;
   }
   
   .sj-book h1{
@@ -176,7 +176,7 @@
   
   .sj-book .p1 .side{
       width:5px;
-      height:600px;
+      height:700px;
       position:absolute;
       top:0;
       left:475px;
@@ -244,7 +244,7 @@
   
   .sj-book .hard{
       width:480px;
-      height:600px;
+      height:700px;
       background-color:white;
       -webkit-box-shadow:none;
       -moz-box-shadow:none;
@@ -261,7 +261,7 @@
   
   .sj-book .own-size{
       width:460px;
-      height:582px;
+      height:682px;
       background-color:white;
       overflow:hidden;
   }
