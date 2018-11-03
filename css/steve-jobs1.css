@@ -167,11 +167,15 @@
   .sj-book .p111, 
   .sj-book .p112{
       background-color:white;
-      background-image:url(../pics/book-covers.jpg) !important;
+     /* background-image:url(../pics/book-covers.jpg) !important ;*/
   }
   
   .sj-book .p1{
-      background-position:0 0;
+    background-image:url(../pics/1200X960Pag1.jpg) !important  ;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+    background-position: 0 0 !important ;
+    
   }
   
   .sj-book .p1 .side{
