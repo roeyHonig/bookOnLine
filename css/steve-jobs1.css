@@ -212,12 +212,12 @@
   }
   
   .sj-book .depth{
-      background-image:url(../pics/pages-depth.png);
-      position:absolute;
-      top:7px;
-      width:16px;
-      height:590px;
-  }
+    background-image:url(../pics/pages-depth.png);
+    position:absolute;
+    top:7px;
+    width:16px;
+    height:590px;
+    }
   
   .sj-book .front-side .depth{
       left:4px;
