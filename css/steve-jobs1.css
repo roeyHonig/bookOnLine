@@ -221,15 +221,22 @@
     top:7px;
     width:16px;
     height:590px;
+    
     }
+
+    
   
   .sj-book .front-side .depth{
       left:4px;
+      background-size: 32px 100% !important; 
+      background-repeat: no-repeat !important;
       background-position:0 0;
   }
   
   .sj-book .back-side .depth{
       right:4px;
+      background-size: 32px 100% !important; 
+      background-repeat: no-repeat !important;
       background-position:right 0;
   }
   
