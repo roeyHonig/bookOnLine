@@ -48,15 +48,15 @@ function loadApp() {
 	}
 
 	// Design Flags
-	var flag1 = 650 // Height For HardCover , original was 600
-	var flag2 = 582 // Hight For Pages , original was 582
+	var flag1 = 820 // Height For HardCover , original was 600
+	var flag2 = 802 // Hight For Pages , original was 582
 
 	$("#canvas").css("height", flag1 + "px");
 	$(".sj-book").css("height", flag1 + "px");
 	$(".sj-book .p1 .side").css("height", flag1 + "px");
 	$(".sj-book .hard").css("height", flag1 + "px");
 	$(".sj-book .own-size").css("height", flag2 + "px");
-	$(".sj-book .depth").css("height", flag2 + "px");
+	$(".sj-book .depth").css("height", flag2 + "px");  //TODO: we need to make this img height 1200px
 	$(".sj-book .depth").css("top", 0.5 * (flag1 - flag2) + "px");
 
 	// Mousewheel

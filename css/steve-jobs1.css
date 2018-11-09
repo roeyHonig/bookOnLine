@@ -1,4 +1,6 @@
 
+
+
 @font-face {
     font-family: 'Stempel-Garamond-W01-Roman';
     font-style: normal;
@@ -11,6 +13,8 @@
       padding:0;
       overflow:hidden;
   }
+
+  html, body { height: 100%; overflow: auto;}
   
   .animated{
       -webkit-transition:margin-left 0.2s ease-in-out;
@@ -231,7 +235,11 @@
   
   
   .sj-book .p2{
-      background-position:-480px 0 !important;
+      /*background-position:-480px 0 !important;*/
+      background-image:url(../pics/1200X960Pag2.jpg) !important  ;
+      background-size: 100% 100% !important;
+      background-repeat: no-repeat !important;
+      background-position: 0 0 !important ;
   }
   
   .sj-book .p3{
@@ -239,11 +247,19 @@
   }
   
   .sj-book .p111{
-      background-position:-960px 0 !important;
+      /*background-position:-960px 0 !important;*/
+      background-image:url(../pics/1200X960LastPageInside.jpg) !important  ;
+      background-size: 100% 100% !important;
+      background-repeat: no-repeat !important;
+      background-position: 0 0 !important ;
   }
   
   .sj-book .p112{
-      background-position:-1440px 0 !important;
+      /*background-position:-1440px 0 !important;*/
+      background-image:url(../pics/1200X960LastPageOutside.jpg) !important  ;
+      background-size: 100% 100% !important;
+      background-repeat: no-repeat !important;
+      background-position: 0 0 !important ;
   }
   
   .sj-book .hard{
@@ -335,7 +351,7 @@
   }
   
   .sj-book .table-contents a:hover{
-      background:#CAD1EE;
+    background:#CAD1EE;
       float:left;
       width:100%;
       clear:both;
