@@ -14,7 +14,9 @@
       overflow:hidden;
   }
 
-  html, body { height: 100%; overflow: auto;}
+  /*why 125%?, well because when you hover over the BL \ BR cornerrs, it seems the Canvas Div or something else geys higher and the Body needs to accomedite to that changing height, the result is unsmooth turning of the pages*/
+  html, body { height: 125%; overflow-y: auto; overflow-x: hidden;}
+
   
   .animated{
       -webkit-transition:margin-left 0.2s ease-in-out;
