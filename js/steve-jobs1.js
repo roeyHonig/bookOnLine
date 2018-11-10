@@ -6,23 +6,31 @@
 
     // begining of Script !!!!!!!!!!!!!!!!!!!!!!!!
         
-    function updateDepth(book, newPage) {
+    function updateDepth(book, newPage, hardCoverWidth, pageWidth) {
         
             var page = book.turn('page'),
                 pages = book.turn('pages'),
-                depthWidth = 16*Math.min(1, page*2/pages);
+                depthWidth = 16*Math.min(1, page * 2/pages); // original depthWidth = 16*Math.min(1, page*2/pages)
         
                 newPage = newPage || page;
         
-            if (newPage>3)
+            if (newPage>3) {
                 $('.sj-book .p2 .depth').css({
                     width: depthWidth,
                     left: 20 - depthWidth
                 });
-            else
+
+                $('.sj-book .front-side .roeyDepth').css({
+                    left: hardCoverWidth - pageWidth  - ((newPage - 3) / pages) * 16 
+                });
+            }
+            else {
                 $('.sj-book .p2 .depth').css({width: 0});
-        
-                depthWidth = 16*Math.min(1, (pages-page)*2/pages);
+                
+         
+                 depthWidth = 16*Math.min(1, (pages-page)*2/pages);
+            }
+                
         
             if (newPage<pages-3)
                 $('.sj-book .p111 .depth').css({
@@ -43,7 +51,7 @@
         
         }
         
-        function addPage(page, book, flagedHeight) {
+        function addPage(page, book, flagedHeight, flagedWidth) {
         
             var id, pages = book.turn('pages');
         
@@ -51,7 +59,7 @@
         
                 var element = $('<div />',
                     {'class': 'own-size',
-                        css: {width: 460, height: flagedHeight}
+                        css: {width: flagedWidth, height: flagedHeight}
                     }).
                     html('<div class="loader"></div>');
         

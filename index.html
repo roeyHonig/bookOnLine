@@ -19,7 +19,10 @@
 	<div id="book-zoom">
 		<div class="sj-book">
 			<div depth="5" class="hard"> <div class="side"></div> </div>
-			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
+			<div depth="5" class="hard front-side">
+				 <div  class="depth" ></div>
+				 <div class="roeyDepth"></div>
+				 </div>
 			<div class="own-size"></div>
 			<div class="own-size even"></div>
 			<div class="hard fixed back-side p111"> <div class="depth"></div> </div>
@@ -48,8 +51,14 @@ function loadApp() {
 	}
 
 	// Design Flags
-	var flag1 = 900 // Height For HardCover , original was 600
-	var flag2 = 872 // Hight For Pages , original was 582
+	var flag1 = 600 // Height For HardCover , original was 600
+	var flag2 = 582 // Hight For Pages , original was 582
+	var flag3 = 580 // Width For HardCover , original was 480
+	var flag4 = 460 // Width For Pages , original was 460
+
+	var computed1 = $(".sj-book .p1 .side").css("width") // it's probabply the width of a shdow of page 1, when it's closed
+	var computed2 = $(".sj-book .depth").css("width") // it's the width of the depth image (in fact it's 0.5 the width because the depth image is symetric)
+
 
 	$("#canvas").css("height", flag1 + "px");
 	$(".sj-book").css("height", flag1 + "px");
@@ -59,6 +68,25 @@ function loadApp() {
 	$(".sj-book .depth").css("height", flag2 * 1.015 + "px"); 
 	$(".sj-book .depth").css("top", 0.5 * (flag1 - flag2) + "px");
 
+	$("#canvas").css("width", flag3 * 2 + "px");
+	$(".sj-book").css("width", flag3 * 2 + "px");
+	$(".sj-book .p1 .side").css("left", (flag3 - computed1) + "px");
+	$(".sj-book .hard").css("width", flag3 + "px");
+	$(".sj-book .own-size").css("width", flag4 + "px");
+	$(".sj-book .front-side .roeyDepth").css("left", ((flag3-flag4)) + "px");
+	$(".sj-book .front-side .roeyDepth").css("height", flag2 * 1.015 + "px"); 
+
+	/*$(".sj-book .front-side .depth").each(function () {
+    this.style.setProperty( "left", 54 + "px", "important" );
+});*/
+
+//$("#depthIDLeft").css("cssText", "left: 63px !important;");
+
+//$(".sj-book .front-side .depth").attr("style","left: 54px !important;");
+
+	//$(".sj-book .front-side .depth").css("left", ((flag3-flag4)-computed2) + "px !important");
+	//$(".sj-book .back-side .depth").css("right", ((flag3-flag4)-computed2) + "px");
+	
 	// Mousewheel
 
 	$('#book-zoom').mousewheel(function(event, delta, deltaX, deltaY) {
@@ -214,8 +242,12 @@ function loadApp() {
 					}
 				}
 
-				updateDepth(book, page);
-				
+				updateDepth(book, page, flag3, flag4);
+
+				if (page>4)
+					$(".sj-book .front-side .roeyDepth").css("visibility", "visible");
+				else
+					$(".sj-book .front-side .roeyDepth").css("visibility", "hidden");
 				if (page>=2)
 					$('.sj-book .p2').addClass('fixed');
 				else
@@ -271,7 +303,7 @@ function loadApp() {
 			missing: function (e, pages) {
 
 				for (var i = 0; i < pages.length; i++) {
-					addPage(pages[i], $(this), flag2);
+					addPage(pages[i], $(this), flag2, flag4);
 				}
 
 			}
