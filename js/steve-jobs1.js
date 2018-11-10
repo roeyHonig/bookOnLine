@@ -32,11 +32,16 @@
             }
                 
         
-            if (newPage<pages-3)
+            if (newPage<pages-3) {
                 $('.sj-book .p111 .depth').css({
                     width: depthWidth,
                     right: 20 - depthWidth
                 });
+
+                $('.sj-book .back-side .roeyDepthBack').css({
+                    right: -pageWidth   + ((newPage - 3) / pages) * 16 
+                });
+            }
             else
                 $('.sj-book .p111 .depth').css({width: 0});
         

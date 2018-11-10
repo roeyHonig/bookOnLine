@@ -250,14 +250,31 @@
     background-repeat: no-repeat !important;
    
 }
-  
+
+
   .sj-book .back-side .depth{
-      right:4px;
+    visibility: hidden;    
+      /*right:4px;
       background-size: 32px 100% !important; 
       background-repeat: no-repeat !important;
-     background-position:right 0;
+     background-position:right 0;*/
   }
   
+  .sj-book .back-side .roeyDepthBack{
+    top: 7px;
+    visibility: visible  ; 
+  position: relative;
+  background-image:url(../pics/pages-depth.png);
+  background-position:-16px 0;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    width:16px;
+    height:590px;
+  right:0px;
+  background-size: 32px 100% !important; 
+  background-repeat: no-repeat !important;
+ 
+}
   
   .sj-book .p2{
       /*background-position:-480px 0 !important;*/

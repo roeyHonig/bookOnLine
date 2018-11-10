@@ -22,10 +22,13 @@
 			<div depth="5" class="hard front-side">
 				 <div  class="depth" ></div>
 				 <div class="roeyDepth"></div>
-				 </div>
+			</div>
 			<div class="own-size"></div>
 			<div class="own-size even"></div>
-			<div class="hard fixed back-side p111"> <div class="depth"></div> </div>
+			<div class="hard fixed back-side p111">
+				 <div class="depth"></div> 
+				 <div class="roeyDepthBack"></div>
+				</div>
 			<div class="hard p112"></div>
 		</div>
 	</div>
@@ -54,7 +57,7 @@ function loadApp() {
 	var flag1 = 600 // Height For HardCover , original was 600
 	var flag2 = 582 // Hight For Pages , original was 582
 	var flag3 = 580 // Width For HardCover , original was 480
-	var flag4 = 460 // Width For Pages , original was 460
+	var flag4 = 560 // Width For Pages , original was 460
 
 	var computed1 = $(".sj-book .p1 .side").css("width") // it's probabply the width of a shdow of page 1, when it's closed
 	var computed2 = $(".sj-book .depth").css("width") // it's the width of the depth image (in fact it's 0.5 the width because the depth image is symetric)
@@ -73,19 +76,14 @@ function loadApp() {
 	$(".sj-book .p1 .side").css("left", (flag3 - computed1) + "px");
 	$(".sj-book .hard").css("width", flag3 + "px");
 	$(".sj-book .own-size").css("width", flag4 + "px");
+	//TODO: the thing about the depth is that now it is simply beeing movved around
+	// when turning, hiding and poping out into visibility
+	// but you should also try to stretch the background img height and hide the spilled overflow
+	// so it will allawys be perfectlly aligned
 	$(".sj-book .front-side .roeyDepth").css("left", ((flag3-flag4)) + "px");
 	$(".sj-book .front-side .roeyDepth").css("height", flag2 * 1.015 + "px"); 
-
-	/*$(".sj-book .front-side .depth").each(function () {
-    this.style.setProperty( "left", 54 + "px", "important" );
-});*/
-
-//$("#depthIDLeft").css("cssText", "left: 63px !important;");
-
-//$(".sj-book .front-side .depth").attr("style","left: 54px !important;");
-
-	//$(".sj-book .front-side .depth").css("left", ((flag3-flag4)-computed2) + "px !important");
-	//$(".sj-book .back-side .depth").css("right", ((flag3-flag4)-computed2) + "px");
+	$(".sj-book .back-side .roeyDepthBack").css("right", -flag4  + "px");
+	$(".sj-book .back-side .roeyDepthBack").css("height", flag2 * 1.015 + "px"); 
 	
 	// Mousewheel
 
@@ -248,6 +246,12 @@ function loadApp() {
 					$(".sj-book .front-side .roeyDepth").css("visibility", "visible");
 				else
 					$(".sj-book .front-side .roeyDepth").css("visibility", "hidden");
+				if (page<pages-3)
+					$(".sj-book .back-side .roeyDepthBack").css("visibility", "visible");	
+				else
+					$(".sj-book .back-side .roeyDepthBack").css("visibility", "hidden");
+				
+					
 				if (page>=2)
 					$('.sj-book .p2').addClass('fixed');
 				else
