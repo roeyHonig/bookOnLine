@@ -41,7 +41,7 @@
 <script type="text/javascript">
 
 function loadApp() {
-	// use Ctrl F5 to force the Reloading of the page if changes do not take effect
+	// use Ctrl F5 (in Mac CMD + shift + r) to force the Reloading of the page if changes do not take effect
 	// rotem needs to take pictueres for me of about 960px Width X 1200px Height
 	
 	var flipbook = $('.sj-book');
@@ -56,8 +56,8 @@ function loadApp() {
 	// Design Flags
 	var flag1 = 600 // Height For HardCover , original was 600
 	var flag2 = 582 // Hight For Pages , original was 582
-	var flag3 = 580 // Width For HardCover , original was 480
-	var flag4 = 560 // Width For Pages , original was 460
+	var flag3 = 480 // Width For HardCover , original was 480
+	var flag4 = 460 // Width For Pages , original was 460
 
 	var computed1 = $(".sj-book .p1 .side").css("width") // it's probabply the width of a shdow of page 1, when it's closed
 	var computed2 = $(".sj-book .depth").css("width") // it's the width of the depth image (in fact it's 0.5 the width because the depth image is symetric)
@@ -83,7 +83,8 @@ function loadApp() {
 	$(".sj-book .front-side .roeyDepth").css("left", ((flag3-flag4)) + "px");
 	$(".sj-book .front-side .roeyDepth").css("height", flag2 * 1.015 + "px"); 
 	$(".sj-book .back-side .roeyDepthBack").css("right", -flag4  + "px");
-	$(".sj-book .back-side .roeyDepthBack").css("height", flag2 * 1.015 + "px"); 
+	$(".sj-book .back-side .roeyDepthBack").css("height", flag2 + "px"); 
+	$(".sj-book .back-side .roeyDepthBack").css("top", 0.5 * (flag1 - flag2) + "px");
 	
 	// Mousewheel
 
