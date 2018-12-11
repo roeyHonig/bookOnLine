@@ -1,12 +1,14 @@
 /* Steve jobs' book */
 /* flag1 -> Height of the bookCover in px */
 /* flag2 -> Height of the bookPages in px */
-
-
+    
 
     // begining of Script !!!!!!!!!!!!!!!!!!!!!!!!
         
-    function updateDepth(book, newPage, hardCoverWidth, pageWidth) {
+    function updateDepth(book, newPage, hardCoverWidth, pageWidth, pageDepthHalfWidth, pageHieght, hardCoverHeight) {
+
+        // imagine a rectangeleer, width b = pageDepthHalfWidth. is height is made of 
+        // 2 * (b + h) and is equal to the pageHieght
         
             var page = book.turn('page'),
                 pages = book.turn('pages'),
@@ -32,18 +34,34 @@
             }
                 
         
-            if (newPage<pages-3) {
+            if (newPage<pages-3 && newPage >= 3) {
                 $('.sj-book .p111 .depth').css({
                     width: depthWidth,
                     right: 20 - depthWidth
                 });
+                var horizantalMove = -pageWidth   + ((newPage - 3) / pages) * pageDepthHalfWidth * 0.6; // why is there a factor of 0.6? well, because the depth image is not really the width of it, there is also shdow in the sides
+                var absoulteValueHorizantalMove = ((newPage - 3)/ pages) * pageDepthHalfWidth * 0.6;;
+                var h = (pageHieght - 2 * pageDepthHalfWidth) / 2;
+                var alfa = (absoulteValueHorizantalMove  + h + pageDepthHalfWidth) / (pageDepthHalfWidth + h);
+                
+                if (!isNaN(alfa)) {
+                    halfDepthWidthBeforeTurn = alfa * pageDepthHalfWidth * 2;
+                    depthHeightBeforeTurn = alfa * pageHieght * 1.019;
+                    console.log("horMove: " +absoulteValueHorizantalMove);
+                     $('.sj-book .back-side .roeyDepthBack').css("background-position", (-(absoulteValueHorizantalMove)-pageDepthHalfWidth)+"px");
+                     $('.sj-book .back-side .roeyDepthBack').css("background-size", halfDepthWidthBeforeTurn+"px " + depthHeightBeforeTurn + "px");
+                     console.log("roeyroey: " + $(".sj-book .back-side .roeyDepthBack").css("background-size"));
 
-                $('.sj-book .back-side .roeyDepthBack').css({
-                    right: -pageWidth   + ((newPage - 3) / pages) * 16 
-                });
+                }
+               
             }
-            else
+            else if (newPage < 3) {
                 $('.sj-book .p111 .depth').css({width: 0});
+                $('.sj-book .back-side .roeyDepthBack').css("background-position", (-pageDepthHalfWidth)+"px");
+                $('.sj-book .back-side .roeyDepthBack').css("background-size", (pageDepthHalfWidth * 2)+"px " + (pageHieght * 1.019) + "px");
+
+            }
+                
         
         }
         

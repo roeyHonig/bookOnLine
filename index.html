@@ -58,10 +58,11 @@ function loadApp() {
 	var flag2 = 582 // Hight For Pages , original was 582
 	var flag3 = 480 // Width For HardCover , original was 480
 	var flag4 = 460 // Width For Pages , original was 460
+	var flag5 = 16 // Half Width For the page depth div , original was 16. the background image is 32px width
 
 	var computed1 = $(".sj-book .p1 .side").css("width") // it's probabply the width of a shdow of page 1, when it's closed
 	var computed2 = $(".sj-book .depth").css("width") // it's the width of the depth image (in fact it's 0.5 the width because the depth image is symetric)
-
+	
 
 	$("#canvas").css("height", flag1 + "px");
 	$(".sj-book").css("height", flag1 + "px");
@@ -86,6 +87,9 @@ function loadApp() {
 	$(".sj-book .back-side .roeyDepthBack").css("height", flag2 + "px"); 
 	$(".sj-book .back-side .roeyDepthBack").css("top", 0.5 * (flag1 - flag2) + "px");
 	
+	$('.sj-book .back-side .roeyDepthBack').css("background-size", 2*flag5+"px " + (flag2 * 1.019) + "px");
+
+
 	// Mousewheel
 
 	$('#book-zoom').mousewheel(function(event, delta, deltaX, deltaY) {
@@ -241,7 +245,7 @@ function loadApp() {
 					}
 				}
 
-				updateDepth(book, page, flag3, flag4);
+				updateDepth(book, page, flag3, flag4, flag5, flag2, flag1);
 
 				if (page>4)
 					$(".sj-book .front-side .roeyDepth").css("visibility", "visible");

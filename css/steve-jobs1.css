@@ -266,15 +266,15 @@
   position: relative;
   background-image:url(../pics/pages-depth.png);
   background-position: center;
-  background-position:-16px /*0*/;
+  background-position:-16px ;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     width:16px;
     height:590px;
   right:0px;
-  background-size: 32px 101.9% !important; 
+  background-size: 200% 101.9%; 
   background-repeat: no-repeat !important;
- 
+    
 }
   
   .sj-book .p2{
