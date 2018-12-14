@@ -9,30 +9,21 @@
 
         // imagine a rectangeleer, width b = pageDepthHalfWidth. is height is made of 
         // 2 * (b + h) and is equal to the pageHieght
+
+        // TODO: very good but try to fix this bug:
+        // i've opened the book (from one side or another)
+        // i'm using the slider to quicklly move to the middle of the book
+        // i'm relising the slider and the pages start to turn
+        // the problem is that even before the pages finished turning the depth appers
+        // for 1 second it's not preaty
+        // should see if there is an event for when turning the pages has ended
         
             var page = book.turn('page'),
                 pages = book.turn('pages'),
                 depthWidth = 16*Math.min(1, page * 2/pages); // original depthWidth = 16*Math.min(1, page*2/pages)
         
                 newPage = newPage || page;
-        /*
-            if (newPage>3) {
-                $('.sj-book .p2 .depth').css({
-                    width: depthWidth,
-                    left: 20 - depthWidth
-                });
-
-                $('.sj-book .front-side .roeyDepth').css({
-                    left: hardCoverWidth - pageWidth  - ((newPage - 3) / pages) * 16 
-                });
-            }
-            else {
-                $('.sj-book .p2 .depth').css({width: 0});
-                
-         
-                 depthWidth = 16*Math.min(1, (pages-page)*2/pages);
-            }
-                */
+        
         
             if (newPage<pages-3 && newPage >= 3) {
                 $('.sj-book .p111 .depth').css({
@@ -40,17 +31,24 @@
                     right: 20 - depthWidth
                 });
                 var horizantalMove = -pageWidth   + ((newPage - 3) / pages) * pageDepthHalfWidth * 0.6; // why is there a factor of 0.6? well, because the depth image is not really the width of it, there is also shdow in the sides
-                var absoulteValueHorizantalMove = ((newPage - 3)/ pages) * pageDepthHalfWidth * 0.6;;
+                var absoulteValueHorizantalMove = ((newPage - 3)/ pages) * pageDepthHalfWidth * 0.6;
                 var h = (pageHieght - 2 * pageDepthHalfWidth) / 2;
                 var alfa = (absoulteValueHorizantalMove  + h + pageDepthHalfWidth) / (pageDepthHalfWidth + h);
                 
+                var frontAbsoulteValueHorizantalMove = -((newPage - (pages-3)) / pages) * pageDepthHalfWidth * 0.6;
+                var frontAlfa = (frontAbsoulteValueHorizantalMove  + h + pageDepthHalfWidth) / (pageDepthHalfWidth + h);
+
+
                 if (!isNaN(alfa)) {
                     halfDepthWidthBeforeTurn = alfa * pageDepthHalfWidth * 2;
                     depthHeightBeforeTurn = alfa * pageHieght * 1.019;
-                    console.log("horMove: " +absoulteValueHorizantalMove);
+                    frontHalfDepthWidthBeforeTurn = frontAlfa * pageDepthHalfWidth * 2;
+                    frontDepthHeightBeforeTurn = frontAlfa * pageHieght * 1.019;
                      $('.sj-book .back-side .roeyDepthBack').css("background-position", (-(absoulteValueHorizantalMove)-pageDepthHalfWidth)+"px");
                      $('.sj-book .back-side .roeyDepthBack').css("background-size", halfDepthWidthBeforeTurn+"px " + depthHeightBeforeTurn + "px");
-                     console.log("roeyroey: " + $(".sj-book .back-side .roeyDepthBack").css("background-size"));
+
+                     $('.sj-book .front-side .roeyDepth').css("background-position", (frontAbsoulteValueHorizantalMove)+"px");
+                     $('.sj-book .front-side .roeyDepth').css("background-size", frontHalfDepthWidthBeforeTurn+"px " + frontDepthHeightBeforeTurn + "px");
 
                 }
                
@@ -59,6 +57,11 @@
                 $('.sj-book .p111 .depth').css({width: 0});
                 $('.sj-book .back-side .roeyDepthBack').css("background-position", (-pageDepthHalfWidth)+"px");
                 $('.sj-book .back-side .roeyDepthBack').css("background-size", (pageDepthHalfWidth * 2)+"px " + (pageHieght * 1.019) + "px");
+
+            }
+            else if (newPage > pages-3){
+                $('.sj-book .front-side .roeyDepth').css("background-position", 0+"px");
+                $('.sj-book .front-side .roeyDepth').css("background-size", (pageDepthHalfWidth * 2)+"px " + (pageHieght * 1.019) + "px");
 
             }
                 
