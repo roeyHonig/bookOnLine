@@ -241,12 +241,14 @@
       visibility: hidden  ; 
     position: relative;
     background-image:url(../pics/pages-depth.png);
+    background-position: center;
+    background-position: 0px ;
       margin: 0 0 0 0;
       padding: 0 0 0 0;
       width:16px;
       height:590px;
     left:0px;
-    background-size: 32px 100% !important; 
+    background-size: 200% 101.9%; 
     background-repeat: no-repeat !important;
    
 }

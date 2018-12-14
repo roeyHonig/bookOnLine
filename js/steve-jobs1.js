@@ -15,7 +15,7 @@
                 depthWidth = 16*Math.min(1, page * 2/pages); // original depthWidth = 16*Math.min(1, page*2/pages)
         
                 newPage = newPage || page;
-        
+        /*
             if (newPage>3) {
                 $('.sj-book .p2 .depth').css({
                     width: depthWidth,
@@ -32,7 +32,7 @@
          
                  depthWidth = 16*Math.min(1, (pages-page)*2/pages);
             }
-                
+                */
         
             if (newPage<pages-3 && newPage >= 3) {
                 $('.sj-book .p111 .depth').css({
