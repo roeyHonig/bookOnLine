@@ -275,6 +275,24 @@
             return navigator.userAgent.indexOf('Chrome')!=-1;
         
         }
+
+        function roeySliderUpdatedValue(totalNumOfPages, page) {
+
+            if (page == 1){return 1;}
+            
+        
+            if (totalNumOfPages%2 == 0){
+                if (page%2 != 0){
+                    return (page+1)/2;
+                }
+                
+            } else {
+                if (page == totalNumOfPages){return 1 + (totalNumOfPages + 1) / 2;}
+            }
+
+            return 1 + (page) / 2;
+        
+        }
        
     // End of Script!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

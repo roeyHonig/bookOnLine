@@ -35,6 +35,15 @@
 	<div id="slider-bar" class="turnjs-slider">
 		<div id="slider"></div>
 	</div>
+
+	<h1>Custom Range roeySlider</h1>
+	<p>Drag the roeySlider to display the current value.</p>
+
+	<div class="slidecontainer">
+		<input type="range" min="1" max="112" value="50" class="roeySlider" id="myRange">
+		<p>Analog Value: <span id="demo"></span></p>
+		<p>End Value: <span id="demo1"></span></p>
+	</div>
 </div>
 
 
@@ -90,6 +99,8 @@ function loadApp() {
 	$(".sj-book .back-side .roeyDepthBack").css("top", 0.5 * (flag1 - flag2) + "px");
 	$('.sj-book .back-side .roeyDepthBack').css("background-size", 2*flag5+"px " + (flag2 * 1.019) + "px");
 
+
+	var totalNumberOfPages = 112;
 
 	// Mousewheel
 
@@ -204,6 +215,29 @@ function loadApp() {
 
 	});
 
+	// roeySlider
+
+	var roeySlider = document.getElementById("myRange");
+	var output = document.getElementById("demo");
+	var output1 = document.getElementById("demo1");
+	output.innerHTML = roeySlider.value;
+	
+	if (totalNumberOfPages%2 == 0) {
+		roeySlider.max = (1 + totalNumberOfPages/2);
+	} else {
+		roeySlider.max = (1/2 + totalNumberOfPages/2);
+	}
+
+	
+
+	roeySlider.oninput = function() {
+  		output.innerHTML = this.value;
+	}			
+
+	roeySlider.onchange = function() {
+		  output1.innerHTML = this.value;
+	}
+
 
 	// Flipbook
 
@@ -215,7 +249,7 @@ function loadApp() {
 		autoCenter: true,
 		gradients: true,
 		duration: 1000,
-		pages: 112,
+		pages: totalNumberOfPages, /*original was 112*/
 		when: {
 			turning: function(e, page, view) {
 				
@@ -247,6 +281,8 @@ function loadApp() {
 				}
 
 				updateDepth(book, page, flag3, flag4, flag5, flag2, flag1);
+				roeySlider.value = roeySliderUpdatedValue(totalNumberOfPages, page);
+
 
 				if (page>4)
 					$(".sj-book .front-side .roeyDepth").css("visibility", "visible");
@@ -273,6 +309,7 @@ function loadApp() {
 			},
 
 			turned: function(e, page, view) {
+				// This is an entery point for when the turning of the page has ended
 
 				var book = $(this);
 
@@ -281,6 +318,14 @@ function loadApp() {
 				}
 
 				updateDepth(book);
+				
+				roeySlider.value = roeySliderUpdatedValue(totalNumberOfPages, page);
+
+  				output.innerHTML = roeySlider.value;
+		
+				output1.innerHTML = roeySlider.value;
+	
+
 				
 				$('#slider').slider('value', getViewNumber(book, page));
 
