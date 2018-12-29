@@ -222,6 +222,8 @@ function loadApp() {
 	var output1 = document.getElementById("demo1");
 	output.innerHTML = roeySlider.value;
 	
+	
+
 	if (totalNumberOfPages%2 == 0) {
 		roeySlider.max = (1 + totalNumberOfPages/2);
 	} else {
@@ -236,6 +238,10 @@ function loadApp() {
 
 	roeySlider.onchange = function() {
 		  output1.innerHTML = this.value;
+
+		  var maxValue = roeySlider.max;
+		  var rtlValue = maxValue - roeySlider.value + 1;
+		  $('.sj-book').turn('page', Math.max(1, rtlValue * 2 - 2));
 	}
 
 
