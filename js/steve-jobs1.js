@@ -26,7 +26,7 @@
         
         
             if (newPage<pages-3 && newPage >= 3) {
-                $('.sj-book .p111 .depth').css({
+                $('.sj-book .p51 .depth').css({
                     width: depthWidth,
                     right: 20 - depthWidth
                 });
@@ -54,7 +54,7 @@
                
             }
             else if (newPage < 3) {
-                $('.sj-book .p111 .depth').css({width: 0});
+                $('.sj-book .p51 .depth').css({width: 0});
                 $('.sj-book .back-side .roeyDepthBack').css("background-position", (-pageDepthHalfWidth)+"px");
                 $('.sj-book .back-side .roeyDepthBack').css("background-size", (pageDepthHalfWidth * 2)+"px " + (pageHieght * 1.019) + "px");
 

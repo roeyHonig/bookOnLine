@@ -14,8 +14,11 @@
 
 </head>
 <body>
-    
-<div id="canvas">
+ <!-- if you want to add or subtract pages to the book, you have to change the numbers of the last and before last pages accodinglly-->   
+ <!-- for example, if we have p111 % p112 as the last two pages, you must replace the 111 and 112 to be 51 and 52 respectivvelly-->   
+ <!-- replace in the follwoing files: index.html, steve-jobs.css, steve-jobs1.js and steve-jobs1.css-->   
+
+ <div id="canvas">
 	<div id="book-zoom">
 		<div class="sj-book">
 			<div depth="5" class="hard"> <div class="side"></div> </div>
@@ -25,11 +28,11 @@
 			</div>
 			<div class="own-size"></div>
 			<div class="own-size even"></div>
-			<div class="hard fixed back-side p111">
+			<div class="hard fixed back-side p51"> <!-- this is the page before the last page - the inner side of the back Hard cover -->
 				 <div class="depth"></div> 
 				 <div class="roeyDepthBack"></div>
 				</div>
-			<div class="hard p112"></div>
+			<div class="hard p52"></div>  <!-- this is the last page (and total num of pages) - the outer side of the back Hard cover -->
 		</div>
 	</div>
 	<div id="slider-bar" class="turnjs-slider">
@@ -40,7 +43,7 @@
 	<p>Drag the roeySlider to display the current value.</p>
 
 	<div class="slidecontainer">
-		<input type="range" min="1" max="112" value="50" class="roeySlider" id="myRange">
+		<input type="range" min="1" max="52" value="1" class="roeySlider" id="myRange">
 		<p>Analog Value: <span id="demo"></span></p>
 		<p>End Value: <span id="demo1"></span></p>
 	</div>
@@ -100,7 +103,7 @@ function loadApp() {
 	$('.sj-book .back-side .roeyDepthBack').css("background-size", 2*flag5+"px " + (flag2 * 1.019) + "px");
 
 
-	var totalNumberOfPages = 112;
+	var totalNumberOfPages = 52;
 
 	// Mousewheel
 
@@ -252,7 +255,7 @@ function loadApp() {
 	flipbook.turn({
 		elevation: 50,
 		acceleration: !isChrome(),
-		direction: "rtl",
+		/*direction: "rtl",*/    // uncomment for Right To Left turning
 		autoCenter: true,
 		gradients: true,
 		duration: 1000,
@@ -307,9 +310,9 @@ function loadApp() {
 					$('.sj-book .p2').removeClass('fixed');
 
 				if (page<book.turn('pages'))
-					$('.sj-book .p111').addClass('fixed');
+					$('.sj-book .p51').addClass('fixed');
 				else
-					$('.sj-book .p111').removeClass('fixed');
+					$('.sj-book .p51').removeClass('fixed');
 
 				Hash.go('page/'+page).update();
 					

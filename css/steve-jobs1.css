@@ -170,8 +170,8 @@
   .sj-book .p1,
   .sj-book .p2,
   .sj-book .p3, 
-  .sj-book .p111, 
-  .sj-book .p112{
+  .sj-book .p51, 
+  .sj-book .p52{
       background-color:white;
      /* background-image:url(../pics/book-covers.jpg) !important ;*/
   }
@@ -291,7 +291,7 @@
       background-position:-1920px 0 !important;
   }
   
-  .sj-book .p111{
+  .sj-book .p51{
       /*background-position:-960px 0 !important;*/
       background-image:url(../pics/1200X960LastPageInside.jpg) !important  ;
       background-size: 100% 100% !important;
@@ -299,7 +299,7 @@
       background-position: 0 0 !important ;
   }
   
-  .sj-book .p112{
+  .sj-book .p52{
       /*background-position:-1440px 0 !important;*/
       background-image:url(../pics/1200X960LastPageOutside.jpg) !important  ;
       background-size: 100% 100% !important;
