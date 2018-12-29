@@ -276,7 +276,7 @@
         
         }
 
-        function roeySliderUpdatedValue(totalNumOfPages, page) {
+        function roeySliderUpdatedLeftToRightValue(totalNumOfPages, page) {
 
             if (page == 1){return 1;}
             
@@ -287,10 +287,19 @@
                 }
                 
             } else {
+                // TODO: complete the case for reverse paging (flipping back)
                 if (page == totalNumOfPages){return 1 + (totalNumOfPages + 1) / 2;}
             }
 
             return 1 + (page) / 2;
+        
+        }
+
+        function roeySliderUpdatedRightToLeftValue(totalNumOfPages, page) {
+            var maxValue = (totalNumOfPages%2 == 0) ? (1 + totalNumOfPages/2) : (1/2 + totalNumOfPages/2);
+            var value = roeySliderUpdatedLeftToRightValue(totalNumOfPages, page)
+            
+            return maxValue - value + 1;
         
         }
        

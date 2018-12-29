@@ -246,6 +246,7 @@ function loadApp() {
 	flipbook.turn({
 		elevation: 50,
 		acceleration: !isChrome(),
+		direction: "rtl",
 		autoCenter: true,
 		gradients: true,
 		duration: 1000,
@@ -281,7 +282,7 @@ function loadApp() {
 				}
 
 				updateDepth(book, page, flag3, flag4, flag5, flag2, flag1);
-				roeySlider.value = roeySliderUpdatedValue(totalNumberOfPages, page);
+				roeySlider.value = roeySliderUpdatedRightToLeftValue(totalNumberOfPages, page);
 
 
 				if (page>4)
@@ -319,7 +320,7 @@ function loadApp() {
 
 				updateDepth(book);
 				
-				roeySlider.value = roeySliderUpdatedValue(totalNumberOfPages, page);
+				roeySlider.value = roeySliderUpdatedRightToLeftValue(totalNumberOfPages, page);
 
   				output.innerHTML = roeySlider.value;
 		
