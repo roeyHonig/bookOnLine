@@ -18,7 +18,7 @@
  <!-- for example, if we have p111 % p112 as the last two pages, you must replace the 111 and 112 to be 51 and 52 respectivvelly-->   
  <!-- replace in the follwoing files: index.html, steve-jobs.css, steve-jobs1.js and steve-jobs1.css-->   
 
-<!--  We will now try to support rtl  -->
+
 
  <div id="canvas">
 	<div id="book-zoom">
@@ -57,6 +57,9 @@
 function loadApp() {
 	// use Ctrl F5 (in Mac CMD + shift + r) to force the Reloading of the page if changes do not take effect
 	// rotem needs to take pictueres for me of about 960px Width X 1200px Height
+
+	// RTL Support  
+	var isRTL = true;
 	
 	var flipbook = $('.sj-book');
 
@@ -251,13 +254,17 @@ function loadApp() {
 
 
 	// Flipbook
+	var flippingDirection = "ltr";
+	if (isRTL){
+		flippingDirection = "rtl";
+	}
 
 	flipbook.bind(($.isTouch) ? 'touchend' : 'click', zoomHandle);
 
 	flipbook.turn({
 		elevation: 50,
 		acceleration: !isChrome(),
-		/*direction: "rtl",*/    // uncomment for Right To Left turning
+		direction: flippingDirection,
 		autoCenter: true,
 		gradients: true,
 		duration: 1000,
