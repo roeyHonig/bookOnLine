@@ -60,6 +60,8 @@ function loadApp() {
 
 	// RTL Support  
 	var isRTL = true;
+	// page turning Duration
+	var pageTurningInMilliseconds = 1000;
 	
 	var flipbook = $('.sj-book');
 
@@ -267,7 +269,7 @@ function loadApp() {
 		direction: flippingDirection,
 		autoCenter: true,
 		gradients: true,
-		duration: 1000,
+		duration: pageTurningInMilliseconds,
 		pages: totalNumberOfPages, /*original was 112*/
 		when: {
 			turning: function(e, page, view) {
@@ -298,10 +300,10 @@ function loadApp() {
 						return;
 					}
 				}
-
-				updateDepth(book, page, flag3, flag4, flag5, flag2, flag1);
+				
+				
+				updateDepth(book, page, flag3, flag4, flag5, flag2, flag1, pageTurningInMilliseconds);
 				roeySlider.value = roeySliderUpdatedRightToLeftValue(totalNumberOfPages, page);
-
 
 				if (page>4)
 					$(".sj-book .front-side .roeyDepth").css("visibility", "visible");
@@ -312,6 +314,8 @@ function loadApp() {
 				else
 					$(".sj-book .back-side .roeyDepthBack").css("visibility", "hidden");
 				
+				
+
 					
 				if (page>=2)
 					$('.sj-book .p2').addClass('fixed');
@@ -336,7 +340,7 @@ function loadApp() {
 					book.turn('peel', 'br');
 				}
 
-				updateDepth(book);
+				//updateDepth(book);
 				
 				roeySlider.value = roeySliderUpdatedRightToLeftValue(totalNumberOfPages, page);
 
@@ -362,7 +366,7 @@ function loadApp() {
 			
 				var book = $(this);
 
-				updateDepth(book);
+				//updateDepth(book);
 
 				setTimeout(function() {
 					
