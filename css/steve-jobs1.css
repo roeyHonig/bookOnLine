@@ -242,12 +242,12 @@
     position: relative;
     background-image:url(../pics/pages-depth.png);
     background-position: center;
-    background-position: 0px ;
+    background-position: -16px ;
       margin: 0 0 0 0;
       padding: 0 0 0 0;
       width:16px;
       height:590px;
-    left:0px;
+    right:0px;
     background-size: 200% 101.9%; 
     background-repeat: no-repeat !important;
    

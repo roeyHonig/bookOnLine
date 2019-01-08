@@ -97,7 +97,7 @@ function loadApp() {
 	$(".sj-book .hard").css("width", flag3 + "px");
 	$(".sj-book .own-size").css("width", flag4 + "px");
 	
-	$(".sj-book .front-side .roeyDepth").css("left", ((flag3-flag4)-flag5) + "px");
+	$(".sj-book .front-side .roeyDepth").css("right", (-flag4) + "px");
 	$(".sj-book .front-side .roeyDepth").css("width", flag5 + "px");
 	$(".sj-book .front-side .roeyDepth").css("height", flag2 + "px"); 
 	$(".sj-book .front-side .roeyDepth").css("top", 0.5 * (flag1 - flag2) + "px");
@@ -340,7 +340,7 @@ function loadApp() {
 					book.turn('peel', 'br');
 				}
 
-				//updateDepth(book);
+			
 				
 				roeySlider.value = roeySliderUpdatedRightToLeftValue(totalNumberOfPages, page);
 
@@ -366,7 +366,7 @@ function loadApp() {
 			
 				var book = $(this);
 
-				//updateDepth(book);
+				
 
 				setTimeout(function() {
 					
