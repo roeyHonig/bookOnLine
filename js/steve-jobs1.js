@@ -28,53 +28,62 @@
         
         
             if (newPage<pages-3 && newPage >= 3) {
-                $('.sj-book .p51 .depth').css({
-                    width: depthWidth,
-                    right: 20 - depthWidth
-                });
-                var horizantalMove = -pageWidth   + ((newPage - 3) / pages) * pageDepthHalfWidth * 0.6; // why is there a factor of 0.6? well, because the depth image is not really the width of it, there is also shdow in the sides
-                var absoulteValueHorizantalMove = ((newPage - 3)/ pages) * pageDepthHalfWidth * 0.6;
-                var h = (pageHieght - 2 * pageDepthHalfWidth) / 2;
-                var alfa = (absoulteValueHorizantalMove  + h + pageDepthHalfWidth) / (pageDepthHalfWidth + h);
-                
-                var frontAbsoulteValueHorizantalMove = -((newPage - (pages-3)) / pages) * pageDepthHalfWidth * 0.6;
-                var frontAlfa = (frontAbsoulteValueHorizantalMove  + h + pageDepthHalfWidth) / (pageDepthHalfWidth + h);
+                    $('.sj-book .p51 .depth').css({
+                        width: depthWidth,
+                        right: 20 - depthWidth
+                    });
+                    var horizantalMove = -pageWidth   + ((newPage - 3) / pages) * pageDepthHalfWidth * 0.6; // why is there a factor of 0.6? well, because the depth image is not really the width of it, there is also shdow in the sides
+                    var absoulteValueHorizantalMove = ((newPage - 3)/ pages) * pageDepthHalfWidth * 0.6;
+                    var h = (pageHieght - 2 * pageDepthHalfWidth) / 2;
+                    var alfa = (absoulteValueHorizantalMove  + h + pageDepthHalfWidth) / (pageDepthHalfWidth + h);
+                    
+                    var frontAbsoulteValueHorizantalMove = -((newPage - (pages-3)) / pages) * pageDepthHalfWidth * 0.6;
+                    var frontAlfa = (frontAbsoulteValueHorizantalMove  + h + pageDepthHalfWidth) / (pageDepthHalfWidth + h);
 
 
-                if (!isNaN(alfa)) {
-                    halfDepthWidthBeforeTurn = alfa * pageDepthHalfWidth * 2;
-                    depthHeightBeforeTurn = alfa * pageHieght * 1.019;
-                    frontHalfDepthWidthBeforeTurn = frontAlfa * pageDepthHalfWidth * 2;
-                    frontDepthHeightBeforeTurn = frontAlfa * pageHieght * 1.019;
+                    if (!isNaN(alfa)) {
+                        halfDepthWidthBeforeTurn = alfa * pageDepthHalfWidth * 2;
+                        depthHeightBeforeTurn = alfa * pageHieght * 1.019;
+                        frontHalfDepthWidthBeforeTurn = frontAlfa * pageDepthHalfWidth * 2;
+                        frontDepthHeightBeforeTurn = frontAlfa * pageHieght * 1.019;
 
+                        if ($(".sj-book .back-side .roeyDepthBack").css("visibility").valueOf() == "hidden".valueOf()) {
+                            setTimeout(function(){ 
+                                $('.sj-book .back-side .roeyDepthBack').css("background-position", absoulteValueHorizantalMove+"px");
+                                $('.sj-book .back-side .roeyDepthBack').css("background-size", halfDepthWidthBeforeTurn+"px " + depthHeightBeforeTurn + "px");
+                                $(".sj-book .back-side .roeyDepthBack").css("visibility", "visible");
+                            }, pageTurningInMilliseconds);
+
+                        } else {
+                            $('.sj-book .back-side .roeyDepthBack').css("background-position", absoulteValueHorizantalMove+"px");
+                            $('.sj-book .back-side .roeyDepthBack').css("background-size", halfDepthWidthBeforeTurn+"px " + depthHeightBeforeTurn + "px");
+    
+                        }
+
+                        
+                        $('.sj-book .front-side .roeyDepth').css("background-position", (frontAbsoulteValueHorizantalMove)+"px");
+                        $('.sj-book .front-side .roeyDepth').css("background-size", frontHalfDepthWidthBeforeTurn+"px " + frontDepthHeightBeforeTurn + "px");
+
+                        console.log("currentPage: " + currentPage);
+                        
+
+
+                    }
+               
+            }
+            else if (newPage < 3) {
                     if ($(".sj-book .back-side .roeyDepthBack").css("visibility").valueOf() == "hidden".valueOf()) {
                         setTimeout(function(){ 
                             $('.sj-book .back-side .roeyDepthBack').css("background-position", absoulteValueHorizantalMove+"px");
                             $('.sj-book .back-side .roeyDepthBack').css("background-size", halfDepthWidthBeforeTurn+"px " + depthHeightBeforeTurn + "px");
+                            $(".sj-book .back-side .roeyDepthBack").css("visibility", "visible");
                         }, pageTurningInMilliseconds);
-
                     } else {
-                        $('.sj-book .back-side .roeyDepthBack').css("background-position", absoulteValueHorizantalMove+"px");
-                        $('.sj-book .back-side .roeyDepthBack').css("background-size", halfDepthWidthBeforeTurn+"px " + depthHeightBeforeTurn + "px");
-   
+                        $('.sj-book .p51 .depth').css({width: 0});
+                        $('.sj-book .back-side .roeyDepthBack').css("background-position", 0+"px");
+                        $('.sj-book .back-side .roeyDepthBack').css("background-size", (pageDepthHalfWidth * 2)+"px " + (pageHieght * 1.019) + "px");    
                     }
-
-                     
-                     $('.sj-book .front-side .roeyDepth').css("background-position", (frontAbsoulteValueHorizantalMove)+"px");
-                     $('.sj-book .front-side .roeyDepth').css("background-size", frontHalfDepthWidthBeforeTurn+"px " + frontDepthHeightBeforeTurn + "px");
-
-                     console.log("currentPage: " + currentPage);
-                     
-
-
-                }
-               
-            }
-            else if (newPage < 3) {
-                $('.sj-book .p51 .depth').css({width: 0});
-                $('.sj-book .back-side .roeyDepthBack').css("background-position", 0+"px");
-                $('.sj-book .back-side .roeyDepthBack').css("background-size", (pageDepthHalfWidth * 2)+"px " + (pageHieght * 1.019) + "px");
-
+                
             }
             else if (newPage > pages-3){
                 $('.sj-book .front-side .roeyDepth').css("background-position", 0+"px");

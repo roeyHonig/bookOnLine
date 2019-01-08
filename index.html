@@ -309,7 +309,7 @@ function loadApp() {
 					$(".sj-book .front-side .roeyDepth").css("visibility", "visible");
 				else
 					$(".sj-book .front-side .roeyDepth").css("visibility", "hidden");
-				if (page<pages-3)
+				if (page<pages-3 && $(".sj-book .back-side .roeyDepthBack").css("visibility").valueOf() != "hidden".valueOf())
 					$(".sj-book .back-side .roeyDepthBack").css("visibility", "visible");	
 				else
 					$(".sj-book .back-side .roeyDepthBack").css("visibility", "hidden");
