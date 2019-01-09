@@ -26,8 +26,8 @@
         
                 newPage = newPage || page;
         
-        
-            if (newPage<pages-3 && newPage >= 3) {
+            // middle of the book
+            if (newPage<pages-3 && newPage >= 5) {
                     $('.sj-book .p51 .depth').css({
                         width: depthWidth,
                         right: 20 - depthWidth
@@ -65,10 +65,16 @@
                                     $('.sj-book .back-side .roeyDepthBack').css("background-size", halfDepthWidthBeforeTurn+"px " + depthHeightBeforeTurn + "px");
             
                                 }
-                                if (false){
+
+
+                                if ($(".sj-book .front-side .roeyDepth").css("visibility").valueOf() == "hidden".valueOf()){
                                     // implement timeOut logic
+                                    setTimeout(function(){ 
+                                        $('.sj-book .front-side .roeyDepth').css("background-position", (-frontAbsoulteValueHorizantalMove-16)+"px");
+                                        $('.sj-book .front-side .roeyDepth').css("background-size", frontHalfDepthWidthBeforeTurn+"px " + frontDepthHeightBeforeTurn + "px");
+                                        $(".sj-book .front-side .roeyDepth").css("visibility", "visible");
+                                    }, pageTurningInMilliseconds);
                                 } else {
-                                    console.log("frontAbsoulteValueHorizantalMove is: " + frontAbsoulteValueHorizantalMove)
                                     $('.sj-book .front-side .roeyDepth').css("background-position", (-frontAbsoulteValueHorizantalMove-16)+"px");
                                     $('.sj-book .front-side .roeyDepth').css("background-size", frontHalfDepthWidthBeforeTurn+"px " + frontDepthHeightBeforeTurn + "px");
                                 }
@@ -76,7 +82,12 @@
                     }
                
             }
-            else if (newPage < 3) {
+
+            // begining of the book
+            else if (newPage < 5) {
+                // supress the frontDepth
+                $(".sj-book .front-side .roeyDepth").css("visibility", "hidden");
+
                     if ($(".sj-book .back-side .roeyDepthBack").css("visibility").valueOf() == "hidden".valueOf()) {
                         setTimeout(function(){ 
                             $('.sj-book .p51 .depth').css({width: 0});
@@ -93,11 +104,26 @@
                     }
                 
             }
+
+            // end of the book
             else if (newPage > pages-3){
+                // supress the backDepth
                 $(".sj-book .back-side .roeyDepthBack").css("visibility", "hidden");
 
-                $('.sj-book .front-side .roeyDepth').css("background-position", -16+"px");
-                $('.sj-book .front-side .roeyDepth').css("background-size", (pageDepthHalfWidth * 2)+"px " + (pageHieght * 1.019) + "px");
+                    if ($(".sj-book .front-side .roeyDepth").css("visibility").valueOf() == "hidden".valueOf()) {
+                        // did we jump from the begining of the book straiht to the ending of the book?
+                        setTimeout(function(){ 
+                            $('.sj-book .front-side .roeyDepth').css("background-position", -pageDepthHalfWidth+"px");
+                            $('.sj-book .front-side .roeyDepth').css("background-size", (pageDepthHalfWidth * 2)+"px " + (pageHieght * 1.019) + "px");
+                            $(".sj-book .front-side .roeyDepth").css("visibility", "visible");
+                        },pageTurningInMilliseconds);
+                        
+                    } else {
+                        // we jump to the end of the book from someWhere in the middle
+                        $(".sj-book .front-side .roeyDepth").css("visibility", "visible");
+                        $('.sj-book .front-side .roeyDepth').css("background-position", -pageDepthHalfWidth+"px");
+                        $('.sj-book .front-side .roeyDepth').css("background-size", (pageDepthHalfWidth * 2)+"px " + (pageHieght * 1.019) + "px");
+                    }
 
             }
                 

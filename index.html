@@ -305,10 +305,9 @@ function loadApp() {
 				updateDepth(book, page, flag3, flag4, flag5, flag2, flag1, pageTurningInMilliseconds);
 				roeySlider.value = roeySliderUpdatedRightToLeftValue(totalNumberOfPages, page);
 
-				if (page>4)
+				if (page>5 && $(".sj-book .front-side .roeyDepth").css("visibility").valueOf() != "hidden".valueOf())
 					$(".sj-book .front-side .roeyDepth").css("visibility", "visible");
-				else
-					$(".sj-book .front-side .roeyDepth").css("visibility", "hidden");
+					
 				if (page<pages-3 && $(".sj-book .back-side .roeyDepthBack").css("visibility").valueOf() != "hidden".valueOf())
 					$(".sj-book .back-side .roeyDepthBack").css("visibility", "visible");	
 				
