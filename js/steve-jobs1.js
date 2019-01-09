@@ -41,6 +41,12 @@
                     var frontAlfa = (frontAbsoulteValueHorizantalMove  + h + pageDepthHalfWidth) / (pageDepthHalfWidth + h);
 
 
+                    if (!isNaN(alfa)){
+                        var halfDepthWidthBeforeTurn = alfa * pageDepthHalfWidth * 2;
+                        var depthHeightBeforeTurn = alfa * pageHieght * 1.019;
+                    }
+
+
                     if (!isNaN(alfa)) {
                                 halfDepthWidthBeforeTurn = alfa * pageDepthHalfWidth * 2;
                                 depthHeightBeforeTurn = alfa * pageHieght * 1.019;
@@ -73,11 +79,14 @@
             else if (newPage < 3) {
                     if ($(".sj-book .back-side .roeyDepthBack").css("visibility").valueOf() == "hidden".valueOf()) {
                         setTimeout(function(){ 
-                            $('.sj-book .back-side .roeyDepthBack').css("background-position", absoulteValueHorizantalMove+"px");
-                            $('.sj-book .back-side .roeyDepthBack').css("background-size", halfDepthWidthBeforeTurn+"px " + depthHeightBeforeTurn + "px");
-                            $(".sj-book .back-side .roeyDepthBack").css("visibility", "visible");
+                            $('.sj-book .p51 .depth').css({width: 0});
+                        $('.sj-book .back-side .roeyDepthBack').css("background-position", 0+"px");
+                        $('.sj-book .back-side .roeyDepthBack').css("background-size", (pageDepthHalfWidth * 2)+"px " + (pageHieght * 1.019) + "px"); 
+                        $(".sj-book .back-side .roeyDepthBack").css("visibility", "visible");  
                         }, pageTurningInMilliseconds);
+                        
                     } else {
+                        $(".sj-book .back-side .roeyDepthBack").css("visibility", "visible");
                         $('.sj-book .p51 .depth').css({width: 0});
                         $('.sj-book .back-side .roeyDepthBack').css("background-position", 0+"px");
                         $('.sj-book .back-side .roeyDepthBack').css("background-size", (pageDepthHalfWidth * 2)+"px " + (pageHieght * 1.019) + "px");    
@@ -85,6 +94,8 @@
                 
             }
             else if (newPage > pages-3){
+                $(".sj-book .back-side .roeyDepthBack").css("visibility", "hidden");
+
                 $('.sj-book .front-side .roeyDepth').css("background-position", -16+"px");
                 $('.sj-book .front-side .roeyDepth').css("background-size", (pageDepthHalfWidth * 2)+"px " + (pageHieght * 1.019) + "px");
 
