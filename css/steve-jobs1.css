@@ -70,7 +70,7 @@
       margin:70px 40px;
       max-height: 442px; /*  needs to be a JS flag pageHeight - 2* marginTop  */
       overflow: hidden;
-      background-color: #4CAF50;
+      background-color: #4CAF50; /*TODO: makes this clear*/
       text-align: right;
       direction: rtl;
       padding-left: 5px;
