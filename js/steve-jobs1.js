@@ -130,19 +130,28 @@
             currentPage = newPage;
         }
         
-        function loadPage(page, topMargin, bottomMargin) {
+        function loadPage(page, topMargin, leftMargin, pageHeight, bottomMargin, pageWidth) {
         
             $.ajax({url: 'newPages/page' + page + '.html'}).
                 done(function(pageHtml) {
                     $('.sj-book .p' + page).html(pageHtml.replace('samples/steve-jobs/', ''));
                     // page content
-	                $('.sj-book .book-content').css('margin', topMargin+'px ' + bottomMargin + 'px');
+                    $('.sj-book .book-content').css('margin', topMargin+'px ' + leftMargin + 'px');
+                    $('.sj-book .book-content').css('margin-bottom', bottomMargin+'px');
+                    $('.sj-book .book-content').css('max-height', (pageHeight - topMargin - bottomMargin) + 'px');
+
+                    //      TODO: why 30?, 30 is css hardcodedd, should try to make it responsive
+                    $('.sj-book .page-number').css('top', (topMargin - 30)/2 + 'px'); 
+                    $('.sj-book .page-number').css('width', 100*(1-2*(leftMargin/pageWidth))+"%"); 
+                    $('.sj-book .page-number').css('left', leftMargin+"px"); 
+                    $('.sj-book .even .page-number').css('text-align', "right"); 
+                    $('.sj-book .odd .page-number').css('text-align', "left"); 
 
                 });
         
         }
         
-        function addPage(page, book, flagedHeight, flagedWidth,topMargin, bottomMargin) {
+        function addPage(page, book, flagedHeight, flagedWidth,topMargin, leftMargin, bottomMargin) {
         
             var id, pages = book.turn('pages');
         
@@ -155,7 +164,7 @@
                     html('<div class="loader"></div>');
         
                 if (book.turn('addPage', element, page)) {
-                    loadPage(page, topMargin, bottomMargin);
+                    loadPage(page, topMargin, leftMargin, flagedHeight, bottomMargin, flagedWidth);
                 }
         
             }

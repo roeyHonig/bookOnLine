@@ -68,7 +68,6 @@
       font-family: "Stempel-Garamond-W01-Roman";
       font-size:16px;
       margin:70px 40px;
-      max-height: 442px; /*  needs to be a JS flag pageHeight - 2* marginTop  */
       overflow: hidden;
       background-color: #4CAF50; /*TODO: makes this clear*/
       text-align: right;
@@ -368,12 +367,12 @@
   .sj-book .page-number{
       color:#999;
       width:100%;
-      bottom:25px;
+      /*bottom:25px; oringinally, the page number was at the bottom  */ 
       position:absolute;
       display:block;
       text-align: center;
       line-height:30px;
-      font-size:11px;
+      font-size:11px; 
   }
   
   .sj-book .table-contents{

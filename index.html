@@ -80,9 +80,9 @@ function loadApp() {
 	var flag3 = 480 // Width For HardCover , original was 480
 	var flag4 = 460 // Width For Pages , original was 460
 	var flag5 = 16 // Half Width For the page depth div , original was 16. the background image is 32px width
-	var flag6 = 20 // book page content top and bottom margins in px
-	var flag7 = 10 // book page content top and bottom margins in px
-
+	var flag6 = 40 // book page content top 
+	var flag7 = 10 // book page content left and right margins in px
+	var flag8 = 20 // book page content bottom margins in px
 
 	var computed1 = $(".sj-book .p1 .side").css("width") // it's probabply the width of a shdow of page 1, when it's closed
 	var computed2 = $(".sj-book .depth").css("width") // it's the width of the depth image (in fact it's 0.5 the width because the depth image is symetric)
@@ -384,7 +384,7 @@ function loadApp() {
 			missing: function (e, pages) {
 
 				for (var i = 0; i < pages.length; i++) {
-					addPage(pages[i], $(this), flag2, flag4, flag6, flag7);
+					addPage(pages[i], $(this), flag2, flag4, flag6, flag7, flag8);
 				}
 
 			}
