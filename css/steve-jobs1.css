@@ -74,6 +74,7 @@
       direction: rtl;
       padding-left: 5px;
       padding-right: 5px;
+      
   }
   
   .sj-book blockquote{
@@ -374,6 +375,10 @@
       line-height:30px;
       font-size:11px; 
   }
+
+  .sj-book .center-title{
+    text-align: center;
+}
   
   .sj-book .table-contents{
       font-size:16px;

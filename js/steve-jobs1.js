@@ -146,7 +146,10 @@
                     $('.sj-book .page-number').css('left', leftMargin+"px"); 
                     $('.sj-book .even .page-number').css('text-align', "right"); 
                     $('.sj-book .odd .page-number').css('text-align', "left"); 
-
+                    
+                    $('.sj-book .center-title').css('text-align', "center"); 
+                    $('.sj-book .even .center-title').text("רועי הוניג");
+                    $('.sj-book .odd .center-title').text("התפיסה האנושית");
                 });
         
         }
