@@ -75,10 +75,12 @@ function loadApp() {
 	}
 
 	// Design Flags
-	var flag1 = 600 // Height For HardCover , original was 600
-	var flag2 = 582 // Hight For Pages , original was 582
-	var flag3 = 480 // Width For HardCover , original was 480
-	var flag4 = 460 // Width For Pages , original was 460
+	// even though yo have the option to set all 4 dimenstions of heigh \ width for both pages and hard covers you should
+	// maintain the original AR, ot set the text-size, letter-spacing and lineHeight in the javascript "loadPage" method
+	var flag1 = 600 // Height For HardCover , original was 600   X 2 = 1200
+	var flag2 = 582 // Hight For Pages , original was 582      X 2 = 1164
+	var flag3 = 480 // Width For HardCover , original was 480   X 2 = 960
+	var flag4 = 460 // Width For Pages , original was 460       X 2 = 920
 	var flag5 = 16 // Half Width For the page depth div , original was 16. the background image is 32px width
 	var flag6 = flag2/14.55 // book page content top margin. original was 40
 	var flag7 = 10 // book page content left and right margins in px

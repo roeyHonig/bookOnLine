@@ -136,20 +136,28 @@
                 done(function(pageHtml) {
                     $('.sj-book .p' + page).html(pageHtml.replace('samples/steve-jobs/', ''));
                     // page content
-                    $('.sj-book .book-content').css('margin', topMargin+'px ' + leftMargin + 'px');
-                    $('.sj-book .book-content').css('margin-bottom', bottomMargin+'px');
-                    $('.sj-book .book-content').css('max-height', (pageHeight - topMargin - bottomMargin) + 'px');
+                    // you'll notice that everything scales according to the preDefined pageHeight of 582 except the topMargin because
+                    // that is allready scalable
+                    // TODO: make the other properties also scalable 
+                    $('.sj-book .book-content').css('margin', topMargin +'px ' + leftMargin * (pageHeight/582) + 'px');
+                    $('.sj-book .book-content').css('margin-bottom', bottomMargin * (pageHeight/582)+'px');
+                    $('.sj-book .book-content').css('max-height', (pageHeight - (topMargin) - (bottomMargin*(pageHeight/582))) + 'px');
 
                     //      TODO: why 30?, 30 is css hardcodedd, should try to make it responsive
                     $('.sj-book .page-number').css('top', (topMargin - 30)/2 + 'px'); 
-                    $('.sj-book .page-number').css('width', 100*(1-2*(leftMargin/pageWidth))+"%"); 
-                    $('.sj-book .page-number').css('left', leftMargin+"px"); 
+                    $('.sj-book .page-number').css('width', 100*(1-2*(leftMargin*(pageHeight/582)/pageWidth))+"%"); 
+                    $('.sj-book .page-number').css('left', leftMargin*(pageHeight/582)+"px"); 
                     $('.sj-book .even .page-number').css('text-align', "right"); 
                     $('.sj-book .odd .page-number').css('text-align', "left"); 
                     
                     $('.sj-book .center-title').css('text-align', "center"); 
                     $('.sj-book .even .center-title').text("רועי הוניג");
                     $('.sj-book .odd .center-title').text("התפיסה האנושית");
+
+                    $('.sj-book .book-content p').css("font-size", 13 * (pageHeight/582) + "px");
+                    $('.sj-book .book-content p').css("letter-spacing", 0.5 * (pageHeight/582) + "px");
+                    $('.sj-book .book-content p').css("line-height", 20 * (pageHeight/582) + "px");
+
                 });
         
         }
