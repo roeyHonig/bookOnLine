@@ -151,8 +151,8 @@
                     $('.sj-book .odd .page-number').css('text-align', "left"); 
                     
                     $('.sj-book .center-title').css('text-align', "center"); 
-                    $('.sj-book .even .center-title').text("רועי הוניג");
-                    $('.sj-book .odd .center-title').text("התפיסה האנושית");
+                    $('.sj-book .even .center-title').text("חיים ולצר");
+                    $('.sj-book .odd .center-title').text("מערכת התפיסה האנושית");
 
                     $('.sj-book .book-content p').css("font-size", 13 * (pageHeight/582) + "px");
                     $('.sj-book .book-content p').css("letter-spacing", 0.5 * (pageHeight/582) + "px");

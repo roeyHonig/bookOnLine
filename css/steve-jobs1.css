@@ -119,6 +119,15 @@
       margin: 0px 0;
       /*line-height: 40px; original was 22px*/
   }
+
+  .sj-book .book-content h3{
+    text-align: center;
+    background-color: blue; /* make this clear!!!*/
+    margin: 0px 0px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-size: 125%;
+}
   
   .sj-book .left-pic{
       float:left;
