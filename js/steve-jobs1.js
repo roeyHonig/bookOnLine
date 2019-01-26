@@ -158,6 +158,10 @@
                     $('.sj-book .book-content p').css("letter-spacing", 0.5 * (pageHeight/582) + "px");
                     $('.sj-book .book-content p').css("line-height", 20 * (pageHeight/582) + "px");
 
+                    $('.sj-book .book-content li').css("font-size", 13 * (pageHeight/582) + "px");
+                    $('.sj-book .book-content li').css("letter-spacing", 0.5 * (pageHeight/582) + "px");
+                    $('.sj-book .book-content li').css("line-height", 20 * (pageHeight/582) + "px");
+
                 });
         
         }

@@ -120,6 +120,13 @@
       /*line-height: 40px; original was 22px*/
   }
 
+  .sj-book .book-content li{
+    text-indent: 0px; /* original was 18px;*/
+    margin: 0px 0;
+    padding-right: 5%;
+    /*line-height: 40px; original was 22px*/
+}
+
   .sj-book .book-content h3{
     text-align: center;
     background-color: blue; /* make this clear!!!*/
