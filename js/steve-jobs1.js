@@ -143,6 +143,10 @@
                     $('.sj-book .book-content').css('margin-bottom', bottomMargin * (pageHeight/582)+'px');
                     $('.sj-book .book-content').css('max-height', (pageHeight - (topMargin) - (bottomMargin*(pageHeight/582))) + 'px');
 
+                    $('.sj-book .book-content').css('padding-left', 5 * (pageHeight/582) + "px");
+                    $('.sj-book .book-content').css('padding-right', 5 * (pageHeight/582) + "px");
+
+
                     //      TODO: why 30?, 30 is css hardcodedd, should try to make it responsive
                     $('.sj-book .page-number').css('top', (topMargin - 30)/2 + 'px'); 
                     $('.sj-book .page-number').css('width', 100*(1-2*(leftMargin*(pageHeight/582)/pageWidth))+"%"); 
